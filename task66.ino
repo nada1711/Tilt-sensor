@@ -1,12 +1,21 @@
-const int sensorPin = A0;  // Analog input pin for sensor
-const int motorPin = 9;    // Digital output pin for motor
-
+const int Sensor = 2;  
+const int motorPin = 9;    
 void setup() {
-  pinMode(motorPin, OUTPUT);  // Set motor pin as output
+  
+  pinMode(Sensor, INPUT);  
+  pinMode(motorPin, OUTPUT);      
+ 
 }
-
 void loop() {
-  int sensorValue = analogRead(sensorPin);  // Read sensor value
-  int motorSpeed = map(sensorValue, 0, 1023, 0, 255);  // Map sensor value to motor speed range (0-255)
-  analogWrite(motorPin, motorSpeed);  // Set motor speed
+
+   
+  int sensorValue = analogRead(Sensor);  
+  int motorSpeed = map(sensorValue, 0, 1023, 0, 255);
+  
+  if (Sensor == HIGH) {
+    analogWrite(motorPin, motorSpeed);  
+  }
+  else {
+    analogWrite(motorPin, 0);   
+}
 }
